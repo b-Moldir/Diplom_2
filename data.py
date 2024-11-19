@@ -6,5 +6,9 @@ U_DATA = {
     "email": "testt@bk.ru",
     "name": "Tests"
     }
+INCORRECT_DATA = {
+    "email": "t45es45@yandex.ru",
+    "password": "12222"
+    }
 
 

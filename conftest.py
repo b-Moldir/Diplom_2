@@ -18,7 +18,7 @@ def login_methods():
 def user_data(users_methods):
     payload = create_user_payload()
     response_json = users_methods.create_user(payload)
+    password = payload["password"]
     email = response_json["user"]["email"]
-    name = response_json["user"]["name"]
-    return email, name
+    return email, password
 
