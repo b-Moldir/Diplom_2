@@ -4,6 +4,9 @@ LOGIN_URL = 'auth/login'
 USER_URL = 'auth/user'
 ORDERS_URL = 'orders'
 INGREDIENT_URL = 'ingredients'
+order_data = {
+            "ingredients": []
+        }
 U_DATA = {
     "email": "testt@bk.ru",
     "name": "Tests"
@@ -15,5 +18,12 @@ INCORRECT_DATA = {
 ORDERS_DATA = {
     "ingredients": ["60d3b41abdacab0026a733c6","609646e4dc916e00276b2870"]
     }
+
+
+def get_headers(token):
+    return {
+        "Authorization": f"Bearer {token}"
+        }
+
 
 

@@ -1,5 +1,19 @@
 from data import ORDERS_DATA
 class TestCreateOrders:
+
+    def test_successful_create_orders_with_authorization(self, orders_methods, auth_data):
+        token = auth_data
+        status_code, response_json = orders_methods.create_orders_with_auth(token)
+        expected_message = "Ingredient ids must be provided"
+
+        assert status_code == 400 and response_json["message"] == expected_message
+
+    def test_successful_create_orders_without_auth(self, orders_methods):
+        status_code, response_json = orders_methods.create_orders_with_auth()
+        expected_message = "Ingredient ids must be provided"
+
+        assert status_code == 400 and response_json["message"] == expected_message
+
     def test_successful_create_orders_with_ingredients(self, orders_methods, ingredients_details):
         ingredient_id = ingredients_details
         status_code, response_json = orders_methods.create_orders(ingredient_id)
