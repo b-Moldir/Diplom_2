@@ -15,8 +15,8 @@ def generate_random_string(length):
 
 
 def create_user_payload():
-    email = generate_random_email(),
-    password = generate_random_string(8),
+    email = generate_random_email()
+    password = generate_random_string(8)
     name = generate_random_string(10)
 
     return {
@@ -24,5 +24,7 @@ def create_user_payload():
             "password": password,
             "name": name
         }
+
+
 
 

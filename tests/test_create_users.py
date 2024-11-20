@@ -2,13 +2,19 @@ from helpers import create_user_payload
 from data import U_DATA
 
 
-class TestCreateUser:
+class TestCreateUsers:
     def test_successfull_create_new_user(self, users_methods):
-        data = create_user_payload()
-        status_code, response_json = users_methods.create_user(data)
+        payload = {
+                    "email": "te4@yandex.ru",
+                    "password": "password",
+                    "name": "Username"
+                    }
+
+        status_code, response_json = users_methods.create_user(payload)
         expected_success = "true"
 
         assert status_code == 200 and response_json["success"] == expected_success
+        print(response_json)
 
 
     def test_create_registered_user(self, users_methods):
