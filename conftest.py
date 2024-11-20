@@ -44,6 +44,7 @@ def user_token(users_methods):
     yield access_token
     users_methods.delete_user(access_token)
 
+
 @pytest.fixture()
 def ingredients_details(orders_methods):
     response_json = orders_methods.get_orders()
