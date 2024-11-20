@@ -4,14 +4,9 @@ from data import U_DATA
 
 class TestCreateUsers:
     def test_successfull_create_new_user(self, users_methods):
-        payload = {
-                    "email": "te4@yandex.ru",
-                    "password": "password",
-                    "name": "Username"
-                    }
-
+        payload = create_user_payload()
         status_code, response_json = users_methods.create_user(payload)
-        expected_success = "true"
+        expected_success = True
 
         assert status_code == 200 and response_json["success"] == expected_success
         print(response_json)

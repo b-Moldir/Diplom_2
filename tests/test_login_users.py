@@ -3,8 +3,12 @@ from data import INCORRECT_DATA
 class TestLoginUsers:
     def test_login_with_existing_user(self, login_methods, user_data):
         email, password = user_data
-        status_code, response_json = login_methods.login_user(email,password)
-        expected_success = "true"
+        login_data = {
+            "email": email,
+            "password": password
+        }
+        status_code, response_json = login_methods.login_user(login_data)
+        expected_success = True
 
         assert status_code == 200 and response_json["success"] == expected_success
 

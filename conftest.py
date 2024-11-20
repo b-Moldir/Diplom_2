@@ -7,23 +7,23 @@ from helpers import create_user_payload
 
 @pytest.fixture()
 def users_methods():
-    return UsersMethods
+    return UsersMethods()
 
 
 @pytest.fixture()
 def login_methods():
-    return LoginMethods
+    return LoginMethods()
 
 
 @pytest.fixture()
 def orders_methods():
-    return OrdersMethods
+    return OrdersMethods()
 
 
 @pytest.fixture()
 def user_data(users_methods):
     payload = create_user_payload()
-    response_json = users_methods.create_user(payload)
+    status_code, response_json = users_methods.create_user(payload)
     password = payload["password"]
     email = response_json["user"]["email"]
     return email, password
@@ -31,7 +31,7 @@ def user_data(users_methods):
 
 @pytest.fixture()
 def auth_data(user_data, login_methods):
-    response_json = login_methods.login_user(user_data)
+    status_code, response_json = login_methods.login_user(user_data)
     token = response_json["accessToken"]
     return token
 
@@ -39,7 +39,7 @@ def auth_data(user_data, login_methods):
 @pytest.fixture()
 def user_token(users_methods):
     payload = create_user_payload()
-    response_json = users_methods.create_user(payload)
+    status_code, response_json = users_methods.create_user(payload)
     access_token = response_json["accessToken"]
     yield access_token
     users_methods.delete_user(access_token)
