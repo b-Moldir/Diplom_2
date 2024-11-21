@@ -4,9 +4,6 @@ LOGIN_URL = 'auth/login'
 USER_URL = 'auth/user'
 ORDERS_URL = 'orders'
 INGREDIENT_URL = 'ingredients'
-order_data = {
-            "ingredients": []
-        }
 U_DATA = {
     "email": "testt@bk.ru",
     "name": "Tests"
@@ -20,10 +17,7 @@ ORDERS_DATA = {
     }
 
 
-def get_headers(token):
-    return {
-        "Authorization": f"Bearer {token}"
-        }
+
 
 
 

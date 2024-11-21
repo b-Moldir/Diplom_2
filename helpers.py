@@ -26,5 +26,11 @@ def create_user_payload():
         }
 
 
+def get_headers(token):
+    return {
+        "Authorization": token
+        }
+
+
 
 

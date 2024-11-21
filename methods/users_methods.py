@@ -1,6 +1,7 @@
 import requests
 
-from data import BASE_URL, REGISTER_URL, USER_URL, get_headers
+from data import BASE_URL, REGISTER_URL, USER_URL
+from helpers import get_headers
 
 
 class UsersMethods:

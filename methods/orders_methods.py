@@ -1,5 +1,6 @@
 import requests
-from data import BASE_URL, ORDERS_URL, INGREDIENT_URL, order_data, get_headers
+from data import BASE_URL, ORDERS_URL, INGREDIENT_URL
+from helpers import get_headers
 
 
 class OrdersMethods:
@@ -8,14 +9,12 @@ class OrdersMethods:
         response = requests.get(f"{BASE_URL}{INGREDIENT_URL}")
         return response.status_code, response.json()
 
-    def create_orders(self, data):
-        order_data["ingredients"] = data
-        response = requests.post(f'{BASE_URL}{ORDERS_URL}', json=data)
-        return response.status_code, response.json()
-
-    def create_orders_with_auth(self, token):
+    def create_orders(self, data, token):
+        payload = {
+            "ingredients": data
+        }
         headers = get_headers(token)
-        response = requests.post(f'{BASE_URL}{ORDERS_URL}', headers=headers)
+        response = requests.post(f'{BASE_URL}{ORDERS_URL}', json=payload, headers=headers)
         return response.status_code, response.json()
 
     def get_orders_specific_users(self, token):
