@@ -30,29 +30,16 @@ def user_data(users_methods):
 
 
 @pytest.fixture()
-def auth_data(user_data, login_methods):
+def auth_data(user_data, login_methods, users_methods):
     email, password = user_data
     login_payload = {
         "email": email,
         "password": password
     }
     status_code, response_json = login_methods.login_user(login_payload)
-    if not response_json.get('success'):
-        raise ValueError(f"Логин не удался: {response_json.get('message')}")
     token = response_json.get("accessToken")
-    if not token:
-        raise ValueError(f"accessToken отсутствует в ответе: {response_json}")
-
-    return token
-
-
-@pytest.fixture()
-def user_token(users_methods):
-    payload = create_user_payload()
-    status_code, response_json = users_methods.create_user(payload)
-    access_token = response_json["accessToken"]
-    yield access_token
-    users_methods.delete_user(access_token)
+    yield token
+    users_methods.delete_user(token)
 
 
 @pytest.fixture()
