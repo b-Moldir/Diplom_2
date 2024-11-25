@@ -26,7 +26,9 @@ def user_data(users_methods):
     status_code, response_json = users_methods.create_user(payload)
     password = payload["password"]
     email = response_json["user"]["email"]
-    return email, password
+    token = response_json["accessToken"]
+    yield email, password
+    users_methods.delete_user(token)
 
 
 @pytest.fixture()
