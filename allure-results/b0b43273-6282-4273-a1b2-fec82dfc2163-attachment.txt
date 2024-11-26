@@ -1,0 +1,1 @@
+{'success': True, 'user': {'email': 's3x3v9l5t2@gmail.com', 'name': 'sshcelwenr'}, 'accessToken': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2VlZWY2OWVkMjgwMDAxYjUxNTcwNiIsImlhdCI6MTczMjE3NzY1NCwiZXhwIjoxNzMyMTc4ODU0fQ.snTWt6b93Dpe3X_1U9FGybdZw--vqoGrFEe1rW4GsVM', 'refreshToken': '69d93d6b7f4a94054153a4fbf0d9cc57db4c3c9443ea8fa4a69ab77f9a43ac91ac92a7e731e58fe9'}
